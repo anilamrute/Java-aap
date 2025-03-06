@@ -1,22 +1,25 @@
-name :java CI
+name: End to End CI/CD workflow for Java Applicaton with Maven
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            -name:Checkout code
-            uses:actions/checkout@v2
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
 
-            - name: Java jdk setup
-            uses: actions/setup-java@v1
-            with:
-                java-version: 12
+        - name: Java jdk setup
+          uses: actions/setup-java@v1
+          with:
+            java-version: 12
             
-            - name: maven target # change accordingly
-            run: mvn clean install
+        - name: maven target # change accordingly
+          run: mvn clean install
 
                   
 
